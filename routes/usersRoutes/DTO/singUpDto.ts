@@ -1,4 +1,5 @@
 import {
+  IsEmail,
   IsNotEmpty,
   IsString,
   MaxLength,
@@ -10,7 +11,8 @@ import { MatchPasswords } from "../../../decorators/matchPasswords.decorator";
 export class singUpDto {
   @IsString()
   @IsNotEmpty()
-  username: string;
+  @IsEmail()
+  email: string;
 
   @IsString()
   @IsNotEmpty()

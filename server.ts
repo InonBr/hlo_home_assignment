@@ -1,8 +1,7 @@
 import * as express from "express";
 import * as cors from "cors";
 import connectDB from "./db/db";
-import { singUpDto } from "./routes/usersRoutes/DTO/singUPDto";
-import dtoValidationMiddleware from "./middlewares/dtoValidationMiddleware";
+import usersRouters from "./routes/usersRoutes/usersRoutes";
 
 const app = express();
 const port = 5000;
@@ -10,10 +9,7 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 
-app.post("/", dtoValidationMiddleware(singUpDto), (req, res) => {
-  const { password, passwordConfirm, username }: singUpDto = req.body;
-  res.send({ password, passwordConfirm, username });
-});
+app.use("/api", usersRouters);
 
 connectDB().then(() => {
   console.log("🔵 MongoDB connected...");
