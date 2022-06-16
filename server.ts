@@ -5,7 +5,7 @@ import usersRouters from "./routes/usersRoutes/usersRoutes";
 import messagesRoutes from "./routes/messagesRoutes/messagesRoutes";
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
