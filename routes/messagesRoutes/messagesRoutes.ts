@@ -44,11 +44,14 @@ router.put(
   async (req: currentUserInfoRequest, res) => {
     try {
       const message = await Message.findById(req.params.msgId);
-      message.read = true;
-      await message.save();
 
-      if (!message) {
+      if (!message || req.currentUser.email !== message.receiver) {
         return res.status(404).send("no message was found");
+      }
+
+      if (!message.read) {
+        message.read = true;
+        await message.save();
       }
 
       return res.send(message);
