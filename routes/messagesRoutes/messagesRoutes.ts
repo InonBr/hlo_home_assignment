@@ -62,4 +62,25 @@ router.put(
   }
 );
 
+router.delete(
+  "/deleteMessage/:msgId",
+  auth,
+  async (req: currentUserInfoRequest, res) => {
+    try {
+      const message = await Message.findById(req.params.msgId);
+
+      if (!message || req.currentUser.email !== message.receiver) {
+        return res.status(404).send("no message was found");
+      }
+
+      await Message.findByIdAndDelete(req.params.msgId);
+
+      return res.send(`message id: ${req.params.msgId} deleted successfully`);
+    } catch (err) {
+      console.error(err.message);
+      return res.status(500).send(err);
+    }
+  }
+);
+
 export default router;
