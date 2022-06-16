@@ -14,8 +14,7 @@ const auth = (req, res, next) => {
           findUserById(decodedToken)
             .then((data) => {
               if (!data) {
-                res.status(401).send("forbidden request");
-                return;
+                return res.status(401).send("forbidden request");
               }
 
               req.currentUser = { id: data.id, email: data.email };
