@@ -1,25 +1,8 @@
-import {
-  IsEmail,
-  IsNotEmpty,
-  IsString,
-  MaxLength,
-  MinLength,
-  Validate,
-} from "class-validator";
+import { IsNotEmpty, IsString, Validate } from "class-validator";
 import { MatchPasswords } from "../../../decorators/matchPasswords.decorator";
+import { LogInDto } from "./logInDto";
 
-export class singUpDto {
-  @IsString()
-  @IsNotEmpty()
-  @IsEmail()
-  email: string;
-
-  @IsString()
-  @IsNotEmpty()
-  @MinLength(6)
-  @MaxLength(32)
-  password: string;
-
+export class SingUpDto extends LogInDto {
   @IsString()
   @IsNotEmpty()
   @Validate(MatchPasswords, ["password"])
