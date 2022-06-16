@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import connectDB from "./db/db";
 
 const app = express();
 const port = 5000;
@@ -11,6 +12,9 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.listen(port, () => {
-  console.log(`🟢 app listening on port http://localhost:${port}`);
+connectDB().then(() => {
+  console.log("🔵 MongoDB connected...");
+  app.listen(port, () => {
+    console.log(`🟢 App listening at http://localhost:${port}`);
+  });
 });
