@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "rootDir": "../",
+        /* Experimental Options */
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        /* Advanced Options */
+        "forceConsistentCasingInFileNames": true,
+        "allowSyntheticDefaultImports": true
+    }
+}
