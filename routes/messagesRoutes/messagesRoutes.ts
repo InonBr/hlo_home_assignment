@@ -1,6 +1,6 @@
 import { Router, Request } from "express";
-import auth from "../../middlewares/authMiddleware";
-import dtoValidationMiddleware from "../../middlewares/dtoValidationMiddleware";
+import auth from "../../middleware/authMiddleware";
+import dtoValidationMiddleware from "../../middleware/dtoValidationMiddleware";
 import Message from "../../models/Message";
 import { SendMessageDto } from "./DTO/sendMessageDto";
 
