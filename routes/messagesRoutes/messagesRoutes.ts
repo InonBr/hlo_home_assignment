@@ -38,4 +38,25 @@ router.post(
   }
 );
 
+router.put(
+  "/readMessage/:msgId",
+  auth,
+  async (req: currentUserInfoRequest, res) => {
+    try {
+      const message = await Message.findById(req.params.msgId);
+      message.read = true;
+      await message.save();
+
+      if (!message) {
+        return res.status(404).send("no message was found");
+      }
+
+      return res.send(message);
+    } catch (err) {
+      console.error(err.message);
+      return res.status(500).send(err);
+    }
+  }
+);
+
 export default router;
