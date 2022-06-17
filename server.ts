@@ -1,5 +1,5 @@
-import * as express from "express";
-import * as cors from "cors";
+import express from "express";
+import cors from "cors";
 import connectDB from "./db/db";
 import usersRouters from "./routes/usersRoutes/usersRoutes";
 import messagesRoutes from "./routes/messagesRoutes/messagesRoutes";
