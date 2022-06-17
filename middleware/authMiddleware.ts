@@ -1,5 +1,5 @@
 require("dotenv").config();
-import * as jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import findUserById from "../lib/findUserById";
 
 const auth = (req, res, next) => {

@@ -1,7 +1,7 @@
 require("dotenv").config();
 import { Router } from "express";
-import * as bcrypt from "bcrypt";
-import * as jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import User from "../../models/User";
 import dtoValidationMiddleware from "../../middleware/dtoValidationMiddleware";
 import { SingUpDto } from "./DTO/singUpDto";
